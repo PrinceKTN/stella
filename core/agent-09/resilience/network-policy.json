@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "state_machine": [
+    "ONLINE",
+    "DEGRADED",
+    "OFFLINE",
+    "WAITING",
+    "RESUMING"
+  ],
+  "connectivity_check": {
+    "enabled": true,
+    "timeout_seconds": 8
+  },
+  "retry": {
+    "enabled": true,
+    "max_attempts": 5,
+    "initial_delay_seconds": 1,
+    "maximum_delay_seconds": 30,
+    "jitter": true
+  },
+  "offline_behavior": {
+    "action": "WAIT",
+    "preserve_request": true,
+    "resume_when_online": true
+  },
+  "infinite_wait": false,
+  "request_expiry_minutes": 30
+}

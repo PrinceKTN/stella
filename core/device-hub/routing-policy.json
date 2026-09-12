@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+
+  "routing": {
+    "enabled": true,
+    "default_target": "current_device",
+    "explicit_target_preferred": true,
+    "natural_language_targets": true
+  },
+
+  "examples": {
+    "my_laptop": "resolve user alias",
+    "dad_laptop": "resolve registered alias",
+    "oracle_laptop_01": "resolve immutable device record",
+    "this_device": "current endpoint",
+    "all_laptops": "resolve matching device group"
+  },
+
+  "safety": {
+    "unknown_device": "BLOCK",
+    "offline_device": "QUEUE",
+    "ambiguous_device": "ASK",
+    "destructive_action": "REQUIRE_APPROVAL",
+    "credential_action": "BLOCK",
+    "financial_action": "BLOCK"
+  }
+}

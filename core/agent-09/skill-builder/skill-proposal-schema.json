@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "required": [
+    "name",
+    "description",
+    "requested_capabilities",
+    "permissions",
+    "risk",
+    "dependencies",
+    "tests",
+    "approval"
+  ],
+  "states": [
+    "PROPOSED",
+    "VALIDATED",
+    "SANDBOX",
+    "APPROVED",
+    "INSTALLED",
+    "ENABLED",
+    "QUARANTINED",
+    "ROLLED_BACK"
+  ]
+}

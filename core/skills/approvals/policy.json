@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+
+  "approval": {
+    "manual_approval": true,
+    "single_step_approval": true,
+    "high_risk_required": true,
+    "critical_risk_required": true,
+    "native_required": true,
+    "financial_required": true,
+    "credential_required": true
+  },
+
+  "autonomous": {
+    "enabled": false,
+    "approval_bypass": false
+  }
+}

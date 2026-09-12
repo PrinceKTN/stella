@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+
+  "event_bus": "events/events.jsonl",
+
+  "event_categories": [
+    "system",
+    "agent",
+    "brain",
+    "provider",
+    "task",
+    "scheduler",
+    "skill",
+    "learning",
+    "execution",
+    "safety",
+    "interface"
+  ],
+
+  "interface_consumers": [
+    "terminal",
+    "web_gui",
+    "voice",
+    "video"
+  ],
+
+  "policy": {
+    "append_only": true,
+    "preserve_events": true,
+    "interfaces_read_shared_events": true,
+    "interfaces_do_not_bypass_core": true
+  }
+}

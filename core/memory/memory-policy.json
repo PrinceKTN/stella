@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+
+  "principles": {
+    "user_control": true,
+    "default_session_memory": true,
+    "automatic_permanent_memory": false,
+    "explicit_forget_supported": true,
+    "timed_expiration_supported": true,
+    "project_scoped_memory_supported": true
+  },
+
+  "learning": {
+    "learn_from_conversation": true,
+    "learn_preferences": true,
+    "learn_work_style": true,
+    "learn_from_corrections": true,
+    "infer_permanent_preferences_without_confirmation": false
+  },
+
+  "safety": {
+    "automatic_self_modification": false,
+    "credential_memory": false,
+    "financial_memory": false,
+    "destructive_memory_operations": false,
+    "permanent_memory_requires_confirmation": true
+  }
+}

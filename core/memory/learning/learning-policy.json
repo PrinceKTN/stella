@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+
+  "learning_categories": [
+    "preference",
+    "work_style",
+    "correction",
+    "decision",
+    "lesson",
+    "project"
+  ],
+
+  "learning_strategy": {
+    "observe": true,
+    "infer": true,
+    "store": true,
+    "retrieve": true,
+    "confirm_high_value_preferences": true
+  },
+
+  "confidence": {
+    "initial": 0.5,
+    "reinforcement": 0.1,
+    "maximum": 0.99
+  },
+
+  "rules": {
+    "one_observation_is_not_a_permanent_personality_rule": true,
+    "repeated_behavior_may_increase_confidence": true,
+    "user_correction_overrides_inference": true
+  }
+}

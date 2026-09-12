@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "memory": {
+    "id": "unique-memory-id",
+    "type": "fact|preference|work_style|decision|lesson|correction|project|temporary",
+    "content": "memory content",
+    "source": "conversation|user|system|skill|project",
+    "confidence": 0.0,
+    "created_at": "ISO-8601 timestamp",
+    "updated_at": "ISO-8601 timestamp",
+    "last_used_at": null,
+    "retention_mode": "session|timed|project|long_term|permanent|none",
+    "expires_at": null,
+    "project_scope": null,
+    "sensitivity": "normal|private|sensitive",
+    "status": "active|expired|archived|deleted",
+    "user_confirmed": false
+  }
+}

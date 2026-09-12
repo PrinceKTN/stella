@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+
+  "policy": {
+    "semantic_versions": true,
+    "previous_versions_preserved": true,
+    "failed_versions_preserved": true,
+    "rollback_supported": true,
+    "automatic_upgrade": false
+  },
+
+  "skills": []
+}

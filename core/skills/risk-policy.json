@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+
+  "default": "HIGH",
+
+  "levels": {
+    "LOW": {
+      "examples": [
+        "read-only information",
+        "local formatting",
+        "non-destructive calculation"
+      ],
+      "approval_required": false,
+      "sandbox_preferred": true,
+      "native_allowed": false
+    },
+
+    "MEDIUM": {
+      "examples": [
+        "local file creation",
+        "package inspection",
+        "configuration analysis"
+      ],
+      "approval_required": true,
+      "sandbox_required": true,
+      "native_allowed": false
+    },
+
+    "HIGH": {
+      "examples": [
+        "process execution",
+        "network access",
+        "system modification",
+        "credential access"
+      ],
+      "approval_required": true,
+      "sandbox_required": true,
+      "native_allowed": false
+    },
+
+    "CRITICAL": {
+      "examples": [
+        "financial actions",
+        "credential changes",
+        "security boundary changes",
+        "destructive operations"
+      ],
+      "approval_required": true,
+      "sandbox_required": true,
+      "native_allowed": false,
+      "autonomous_allowed": false
+    }
+  },
+
+  "unknown_risk": {
+    "level": "HIGH",
+    "approval_required": true,
+    "sandbox_required": true,
+    "native_allowed": false,
+    "autonomous_allowed": false
+  }
+}

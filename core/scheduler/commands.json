@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+
+  "shortcuts": {
+    "up": "SELECT_PREVIOUS",
+    "down": "SELECT_NEXT",
+    "enter": "OPEN",
+    "a": "APPROVE",
+    "r": "RUN",
+    "s": "SANDBOX",
+    "n": "NATIVE",
+    "d": "DRY_RUN",
+    "p": "PAUSE",
+    "c": "CANCEL",
+    "l": "LOGS",
+    "h": "HISTORY",
+    "q": "QUIT"
+  },
+
+  "safety": {
+    "run_requires_valid_job": true,
+    "native_requires_approval": true,
+    "high_risk_requires_approval": true,
+    "unknown_risk_requires_approval": true
+  }
+}

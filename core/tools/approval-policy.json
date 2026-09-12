@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "approval_required": [
+    "HIGH",
+    "CRITICAL",
+    "WRITE",
+    "CREDENTIAL",
+    "FINANCIAL",
+    "DESTRUCTIVE"
+  ],
+  "autonomous_approval_bypass": false,
+  "user_can_deny": true,
+  "default": "DENY"
+}

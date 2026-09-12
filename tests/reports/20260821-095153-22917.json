@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "agent": "00-test-safety-controller",
+  "run_id": "20260821-095153-22917",
+  "timestamp": "2026-08-21T09:52:56+0100",
+  "environment": "NATIVE",
+  "device": {
+    "os": "Android / Termux",
+    "termux": true,
+    "architecture": "armv8l",
+    "cpu_cores": 1,
+    "memory_total": "1.7Gi",
+    "memory_available": "452Mi",
+    "storage_total": "52G",
+    "storage_available": "10G"
+  },
+  "sandbox": {
+    "level": "PROOT_AVAILABLE",
+    "note": "PRoot available; stronger filesystem/process separation may be possible."
+  },
+  "results": {
+    "passed": 14,
+    "warned": 0,
+    "failed": 0,
+    "total": 14
+  },
+  "paths": {
+    "run_directory": "/data/data/com.termux/files/home/stella/tests/runs/20260821-095153-22917",
+    "log": "/data/data/com.termux/files/home/stella/tests/runs/20260821-095153-22917/test.log",
+    "report": "/data/data/com.termux/files/home/stella/tests/reports/20260821-095153-22917.json"
+  }
+}

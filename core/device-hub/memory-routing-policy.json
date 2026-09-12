@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+
+  "central_memory": {
+    "owner": "Digital ORACLE",
+    "enabled": true
+  },
+
+  "device_context": {
+    "enabled": true,
+    "isolated": true
+  },
+
+  "routing": {
+    "global_preferences": "central",
+    "user_identity": "central",
+    "conversation_memory": "central",
+    "device_state": "device_scoped",
+    "project_state": "project_scoped",
+    "task_state": "task_scoped"
+  },
+
+  "protection": {
+    "credential_memory": "BLOCKED",
+    "financial_memory": "BLOCKED",
+    "destructive_operation_memory": "BLOCKED"
+  }
+}

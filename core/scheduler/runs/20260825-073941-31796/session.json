@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "scheduler_id": "20260825-073941-31796",
+  "created_at": "2026-08-25T07:39:41+0100",
+  "status": "OBSERVE",
+  "execution_mode": "DRY-RUN",
+  "resource_class": "MICRO",
+  "strategy": "SEQUENTIAL",
+  "max_workers": 1,
+  "active_jobs": 0,
+  "completed_jobs": 0,
+  "failed_jobs": 0,
+  "cancelled_jobs": 0
+}

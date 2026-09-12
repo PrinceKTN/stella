@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+
+  "permissions": {
+    "filesystem_read": {
+      "default": false,
+      "requires_declaration": true
+    },
+
+    "filesystem_write": {
+      "default": false,
+      "requires_approval": true
+    },
+
+    "network": {
+      "default": false,
+      "requires_approval": true
+    },
+
+    "process_execution": {
+      "default": false,
+      "requires_approval": true
+    },
+
+    "device_control": {
+      "default": false,
+      "requires_approval": true,
+      "native_execution_locked": true
+    },
+
+    "credentials": {
+      "default": false,
+      "requires_approval": true,
+      "never_display_secret": true
+    },
+
+    "financial": {
+      "default": false,
+      "requires_approval": true,
+      "autonomous_execution": false
+    }
+  },
+
+  "principle": "least_privilege"
+}

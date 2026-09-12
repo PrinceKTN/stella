@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "component": "live-awareness",
+  "enabled": true,
+
+  "sampling": {
+    "mode": "ON_DEMAND",
+    "continuous_monitoring": false
+  },
+
+  "signals": {
+    "memory": true,
+    "swap": true,
+    "storage": true,
+    "load_average": true,
+    "cpu_count": true,
+    "battery": true,
+    "network": true,
+    "uptime": true
+  },
+
+  "privacy": {
+    "credentials": false,
+    "private_content": false,
+    "process_arguments": false
+  },
+
+  "safety": {
+    "read_only": true,
+    "no_cleanup": true,
+    "no_process_kill": true,
+    "no_configuration_changes": true
+  }
+}

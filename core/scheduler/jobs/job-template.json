@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+
+  "job": {
+    "id": "job-example",
+    "name": "Example Safe Job",
+    "description": "Template only",
+    "status": "PENDING",
+
+    "trigger": {
+      "type": "MANUAL",
+      "schedule": null
+    },
+
+    "execution": {
+      "mode": "DRY-RUN",
+      "sandbox_required": true,
+      "native_allowed": false,
+      "ai_allowed": false,
+      "external_network_allowed": false
+    },
+
+    "risk": {
+      "level": "HIGH",
+      "approval_required": true,
+      "unknown_defaults_to_high": true
+    },
+
+    "limits": {
+      "timeout_seconds": 60,
+      "max_retries": 0,
+      "max_workers": 1
+    },
+
+    "actions": [],
+
+    "result": null
+  }
+}

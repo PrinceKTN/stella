@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-25T07:49:12+0100",
+
+  "policy": {
+    "append_only": true,
+    "preserve_failures": true,
+    "preserve_successes": true,
+    "preserve_user_feedback": true,
+    "automatic_self_modification": false
+  },
+
+  "metrics": [
+    "success_rate",
+    "failure_rate",
+    "execution_time",
+    "resource_usage",
+    "approval_rate",
+    "sandbox_failures",
+    "native_failures",
+    "user_feedback"
+  ],
+
+  "records": []
+}

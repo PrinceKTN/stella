@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+
+  "shortcuts": {
+    "up": "SELECT_PREVIOUS_SKILL",
+    "down": "SELECT_NEXT_SKILL",
+    "enter": "OPEN_SKILL",
+    "t": "TEST_SKILL",
+    "s": "SANDBOX_TEST",
+    "a": "APPROVE_SKILL",
+    "e": "ENABLE_SKILL",
+    "x": "DISABLE_SKILL",
+    "v": "VIEW_VERSION",
+    "l": "VIEW_LEARNING",
+    "r": "ROLLBACK",
+    "q": "QUIT"
+  },
+
+  "policy": {
+    "shortcut_never_bypasses_safety": true,
+    "shortcut_never_bypasses_approval": true,
+    "shortcut_never_enables_autonomy": true
+  }
+}

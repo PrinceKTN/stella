@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "skill": "project-forge",
+  "workflow": [
+    "DISCOVER",
+    "PLAN",
+    "IMPLEMENT",
+    "TEST",
+    "REVIEW",
+    "STAGE",
+    "COMMIT",
+    "PUSH",
+    "VERIFY",
+    "DOCUMENT"
+  ],
+  "automatic": {
+    "discover": true,
+    "plan": true,
+    "test": true,
+    "review": true,
+    "document": true
+  },
+  "approval_required": {
+    "stage": true,
+    "commit": true,
+    "push": true,
+    "merge": true,
+    "release": true
+  },
+  "destructive_actions": {
+    "delete_repository": false,
+    "force_push": false,
+    "reset_hard": false,
+    "clean_untracked": false
+  }
+}

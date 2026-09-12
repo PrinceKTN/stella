@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-08-25T07:54:50+0100",
+
+  "dashboard": {
+    "title": "STELLA",
+    "subtitle": "Digital Oracle Control Center",
+    "mode": "OBSERVE / DRY-RUN"
+  },
+
+  "panels": [
+    "system_overview",
+    "agent_matrix",
+    "brain_and_providers",
+    "task_queue",
+    "automation",
+    "skills",
+    "learning",
+    "sessions",
+    "event_stream",
+    "live_terminal",
+    "resource_monitor",
+    "safety_center"
+  ],
+
+  "live_data": {
+    "refresh": true,
+    "event_stream": true,
+    "logs": true,
+    "resource_metrics": true
+  },
+
+  "controls": {
+    "safe_inspection": true,
+    "approval": true,
+    "execution": false
+  }
+}

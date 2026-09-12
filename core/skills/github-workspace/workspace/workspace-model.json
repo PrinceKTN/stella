@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "workspace": "github-workspace",
+  "account": "PrinceKTN",
+  "architecture": {
+    "multi_project": true,
+    "shared_core": true,
+    "shared_event_bus": true,
+    "project_isolation": true,
+    "persistent_registry": true
+  },
+
+  "project_operations": [
+    "discover",
+    "inspect",
+    "status",
+    "diff",
+    "clone",
+    "branch",
+    "test",
+    "commit",
+    "pull",
+    "push",
+    "release"
+  ],
+
+  "current_execution": {
+    "mode": "OBSERVE",
+    "dry_run": true,
+    "write_operations": false,
+    "autonomous_operations": false
+  }
+}

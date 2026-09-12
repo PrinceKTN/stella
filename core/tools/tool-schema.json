@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "required": [
+    "name",
+    "version",
+    "description",
+    "risk",
+    "permissions",
+    "approval",
+    "execution"
+  ],
+  "risk_levels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "CRITICAL"
+  ]
+}

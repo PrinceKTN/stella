@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "roles": {
+    "director": {
+      "purpose": "Coordinate project workflow and decisions"
+    },
+    "architect": {
+      "purpose": "Break requirements into architecture and implementation tasks"
+    },
+    "developer": {
+      "purpose": "Implement approved changes"
+    },
+    "tester": {
+      "purpose": "Run tests and validate behavior"
+    },
+    "reviewer": {
+      "purpose": "Inspect diffs, quality and regressions"
+    },
+    "security": {
+      "purpose": "Check security boundaries and sensitive-data exposure"
+    },
+    "documentation": {
+      "purpose": "Maintain project documentation and evidence"
+    },
+    "release": {
+      "purpose": "Prepare verified releases"
+    },
+    "git": {
+      "purpose": "Manage repository state and controlled Git operations"
+    }
+  }
+}

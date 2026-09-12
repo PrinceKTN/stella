@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "input": "natural_language",
+  "output": "skill_proposal",
+  "automatic_install": false,
+  "automatic_enable": false,
+  "sandbox_required": true,
+  "approval_required": true,
+  "unknown_capabilities": "HIGH_RISK",
+  "self_modification": false
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+
+  "required": [
+    "skill_id",
+    "name",
+    "version",
+    "description",
+    "category",
+    "risk",
+    "permissions",
+    "execution",
+    "status"
+  ],
+
+  "skill": {
+    "skill_id": "unique-string",
+    "name": "human-readable-name",
+    "version": "semantic-version",
+    "description": "capability-description",
+    "category": "category-name",
+
+    "risk": {
+      "level": "LOW|MEDIUM|HIGH|CRITICAL",
+      "reason": "risk-explanation"
+    },
+
+    "permissions": {
+      "filesystem_read": false,
+      "filesystem_write": false,
+      "network": false,
+      "process_execution": false,
+      "device_control": false,
+      "credentials": false,
+      "financial": false
+    },
+
+    "execution": {
+      "sandbox_allowed": true,
+      "sandbox_required": true,
+      "native_allowed": false,
+      "autonomous_allowed": false,
+      "requires_approval": true
+    },
+
+    "dependencies": [],
+
+    "status": {
+      "enabled": false,
+      "tested": false,
+      "approved": false
+    }
+  }
+}

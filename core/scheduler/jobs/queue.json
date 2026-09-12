@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-25T07:39:41+0100",
+
+  "scheduler": {
+    "status": "READY",
+    "mode": "OBSERVE",
+    "execution": "DRY-RUN"
+  },
+
+  "queue": [],
+
+  "policy": {
+    "max_workers": 1,
+    "strategy": "SEQUENTIAL",
+    "sequential": true,
+    "persistent_history": true,
+    "preserve_previous_runs": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "agent": "08-interface-foundation",
+  "timestamp": "2026-08-25T07:54:50+0100",
+
+  "architecture": {
+    "shared_core": true,
+    "shared_event_bus": true,
+    "shared_state": true,
+    "separate_interfaces": true
+  },
+
+  "interfaces": {
+    "terminal": {
+      "status": "READY",
+      "enabled": true
+    },
+
+    "web_gui": {
+      "status": "FOUNDATION_READY",
+      "enabled": false
+    },
+
+    "voice": {
+      "status": "PLANNED",
+      "enabled": false
+    },
+
+    "video": {
+      "status": "PLANNED",
+      "enabled": false
+    }
+  },
+
+  "safety": {
+    "observe": true,
+    "dry_run": true,
+    "native": false,
+    "autonomous": false
+  }
+}

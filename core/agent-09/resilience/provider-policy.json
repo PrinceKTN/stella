@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "retryable": [
+    "429",
+    "500",
+    "502",
+    "503",
+    "504",
+    "NETWORK_ERROR",
+    "TIMEOUT"
+  ],
+  "non_retryable": [
+    "400",
+    "401",
+    "403",
+    "404"
+  ],
+  "backoff": {
+    "initial_seconds": 1,
+    "maximum_seconds": 30,
+    "jitter": true
+  },
+  "maximum_attempts": 5,
+  "never_loop_forever": true
+}

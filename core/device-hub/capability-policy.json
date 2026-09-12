@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+
+  "capabilities": {
+    "observe": true,
+    "status": true,
+    "filesystem_read": false,
+    "filesystem_write": false,
+    "shell": false,
+    "git": false,
+    "network": false,
+    "camera": false,
+    "microphone": false,
+    "notifications": false
+  },
+
+  "principle": "least_privilege",
+
+  "activation": {
+    "capabilities_require_enrollment": true,
+    "write_capabilities_require_approval": true,
+    "destructive_capabilities_blocked_by_default": true
+  }
+}

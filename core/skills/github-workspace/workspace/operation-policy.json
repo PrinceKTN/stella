@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+
+  "mode": "OBSERVE",
+  "execution": "DRY-RUN",
+
+  "operations": {
+    "account_inspection": {
+      "enabled": true,
+      "approval": false
+    },
+
+    "repository_listing": {
+      "enabled": true,
+      "approval": false
+    },
+
+    "repository_inspection": {
+      "enabled": true,
+      "approval": false
+    },
+
+    "local_status": {
+      "enabled": true,
+      "approval": false
+    },
+
+    "clone": {
+      "enabled": false,
+      "approval": true
+    },
+
+    "branch_create": {
+      "enabled": false,
+      "approval": true
+    },
+
+    "commit": {
+      "enabled": false,
+      "approval": true
+    },
+
+    "pull": {
+      "enabled": false,
+      "approval": true
+    },
+
+    "push": {
+      "enabled": false,
+      "approval": true
+    },
+
+    "repository_create": {
+      "enabled": false,
+      "approval": true
+    },
+
+    "repository_delete": {
+      "enabled": false,
+      "approval": true,
+      "risk": "CRITICAL"
+    }
+  },
+
+  "safety": {
+    "unknown_operation": "BLOCK",
+    "credential_export": "BLOCK",
+    "token_storage": "BLOCK",
+    "destructive_operation": "BLOCK",
+    "autonomous_write": "BLOCK"
+  }
+}

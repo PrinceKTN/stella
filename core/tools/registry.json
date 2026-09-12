@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "tools": [],
+  "default_state": "DISABLED",
+  "unknown_tools": "BLOCK",
+  "unregistered_tools": "BLOCK"
+}

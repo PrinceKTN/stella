@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "provider": "github",
+  "account": "PrinceKTN",
+  "created_at": "2026-08-25T09:06:40+0100",
+  "mode": "OBSERVE",
+  "execution": "DRY-RUN",
+  "projects": [
+    {
+      "name": "kats",
+      "full_name": "PrinceKTN/kats",
+      "description": "",
+      "private": true,
+      "fork": false,
+      "default_branch": "master",
+      "url": "https://github.com/PrinceKTN/kats",
+      "pushed_at": "2026-07-31T22:25:46Z",
+      "local_path": null,
+      "local_detected": false,
+      "operations": {
+        "inspect": true,
+        "clone": false,
+        "branch": false,
+        "commit": false,
+        "push": false,
+        "pull": false,
+        "delete": false
+      }
+    },
+    {
+      "name": "lead-system",
+      "full_name": "PrinceKTN/lead-system",
+      "description": "",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "url": "https://github.com/PrinceKTN/lead-system",
+      "pushed_at": "2026-04-04T23:03:27Z",
+      "local_path": null,
+      "local_detected": false,
+      "operations": {
+        "inspect": true,
+        "clone": false,
+        "branch": false,
+        "commit": false,
+        "push": false,
+        "pull": false,
+        "delete": false
+      }
+    },
+    {
+      "name": "MyTelegramBot",
+      "full_name": "PrinceKTN/MyTelegramBot",
+      "description": "",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "url": "https://github.com/PrinceKTN/MyTelegramBot",
+      "pushed_at": "2026-03-09T22:53:32Z",
+      "local_path": null,
+      "local_detected": false,
+      "operations": {
+        "inspect": true,
+        "clone": false,
+        "branch": false,
+        "commit": false,
+        "push": false,
+        "pull": false,
+        "delete": false
+      }
+    },
+    {
+      "name": "KYATEN-trading-bot",
+      "full_name": "PrinceKTN/KYATEN-trading-bot",
+      "description": "My ai trading bot ",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "url": "https://github.com/PrinceKTN/KYATEN-trading-bot",
+      "pushed_at": "2025-05-13T16:07:49Z",
+      "local_path": null,
+      "local_detected": false,
+      "operations": {
+        "inspect": true,
+        "clone": false,
+        "branch": false,
+        "commit": false,
+        "push": false,
+        "pull": false,
+        "delete": false
+      }
+    },
+    {
+      "name": "K-ai",
+      "full_name": "PrinceKTN/K-ai",
+      "description": "My assistant ai",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "url": "https://github.com/PrinceKTN/K-ai",
+      "pushed_at": "2025-05-10T00:43:24Z",
+      "local_path": null,
+      "local_detected": false,
+      "operations": {
+        "inspect": true,
+        "clone": false,
+        "branch": false,
+        "commit": false,
+        "push": false,
+        "pull": false,
+        "delete": false
+      }
+    }
+  ],
+  "updated_at": "2026-08-25T08:12:56.106945+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "",
+  "created_at": "",
+  "status": "PENDING",
+  "risk": "UNKNOWN",
+  "mode": "OBSERVE",
+  "requires_approval": true,
+  "sandbox_preferred": true,
+  "provider": null,
+  "command": null,
+  "result": null
+}

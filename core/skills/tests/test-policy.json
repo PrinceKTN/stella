@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+
+  "policy": {
+    "sandbox_first": true,
+    "native_testing": false,
+    "network_testing": false,
+    "financial_testing": false,
+    "credential_testing": false,
+    "destructive_testing": false
+  },
+
+  "required_checks": [
+    "schema_validation",
+    "permission_validation",
+    "risk_validation",
+    "dependency_validation",
+    "sandbox_validation",
+    "resource_validation"
+  ]
+}

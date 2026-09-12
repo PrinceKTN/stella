@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "principles": [
+    "least_privilege",
+    "explicit_registration",
+    "deny_unknown",
+    "deny_unapproved",
+    "sandbox_first"
+  ],
+  "filesystem": "BOUNDARY_REQUIRED",
+  "network": "BOUNDARY_REQUIRED",
+  "process": "BOUNDARY_REQUIRED",
+  "credentials": "BLOCKED_BY_DEFAULT",
+  "financial": "BLOCKED_BY_DEFAULT",
+  "destructive": "BLOCKED"
+}

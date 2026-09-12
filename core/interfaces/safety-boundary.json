@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+
+  "rules": {
+    "interface_cannot_bypass_core": true,
+    "interface_cannot_bypass_approval": true,
+    "interface_cannot_enable_autonomous_mode": true,
+    "interface_cannot_execute_native_actions": true,
+    "unknown_actions_blocked": true
+  },
+
+  "current_mode": "OBSERVE",
+  "execution_mode": "DRY-RUN"
+}

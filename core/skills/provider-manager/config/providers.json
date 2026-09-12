@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "skill": "provider-manager",
+  "providers": {
+    "groq": {
+      "display_name": "Groq",
+      "credential_env": "STELLA_GROQ_API_KEY",
+      "type": "remote",
+      "credential_required": true
+    },
+    "gemini": {
+      "display_name": "Google Gemini",
+      "credential_env": "STELLA_GEMINI_API_KEY",
+      "type": "remote",
+      "credential_required": true
+    },
+    "openrouter": {
+      "display_name": "OpenRouter",
+      "credential_env": "STELLA_OPENROUTER_API_KEY",
+      "type": "gateway",
+      "credential_required": true
+    },
+    "ollama": {
+      "display_name": "Ollama",
+      "credential_env": null,
+      "type": "local",
+      "credential_required": false
+    }
+  }
+}

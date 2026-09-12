@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "central_identity": "Digital ORACLE",
+    "immutable_device_id": true,
+    "nickname_mutable": true
+  },
+
+  "naming": {
+    "automatic_naming": true,
+    "custom_naming": true,
+    "aliases": true,
+    "names_must_be_unique": true,
+    "name_collision_resolution": "numeric_suffix"
+  },
+
+  "device_types": [
+    "android",
+    "linux",
+    "windows",
+    "macos",
+    "server",
+    "unknown"
+  ],
+
+  "isolation": {
+    "device_state_isolated": true,
+    "task_state_isolated": true,
+    "device_memory_scope": true,
+    "credentials_isolated": true
+  }
+}

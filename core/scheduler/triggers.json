@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+
+  "supported": {
+    "manual": true,
+    "once": true,
+    "interval": true,
+    "cron": false,
+    "event": true
+  },
+
+  "current_mode": "OBSERVE",
+
+  "execution": {
+    "enabled": false,
+    "dry_run": true
+  },
+
+  "policy": {
+    "unknown_trigger": "REJECT",
+    "approval_required_for_new_automation": true,
+    "sandbox_first": true
+  }
+}

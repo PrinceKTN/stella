@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+
+  "states": [
+    "DISCOVERED",
+    "REGISTERED",
+    "VALIDATED",
+    "TESTING",
+    "TESTED",
+    "PENDING_APPROVAL",
+    "APPROVED",
+    "ENABLED",
+    "DISABLED",
+    "QUARANTINED",
+    "DEPRECATED",
+    "REJECTED"
+  ],
+
+  "safe_flow": [
+    "DISCOVERED",
+    "REGISTERED",
+    "VALIDATED",
+    "TESTING",
+    "TESTED",
+    "PENDING_APPROVAL",
+    "APPROVED",
+    "ENABLED"
+  ],
+
+  "failure_flow": [
+    "TESTING",
+    "QUARANTINED"
+  ],
+
+  "rollback": {
+    "enabled": true,
+    "preserve_previous_version": true,
+    "automatic_destructive_rollback": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "interface": "terminal",
+  "status": "READY",
+
+  "features": {
+    "live_logs": true,
+    "event_stream": true,
+    "task_queue": true,
+    "sessions": true,
+    "skills": true,
+    "provider_status": true,
+    "device_status": true,
+    "scheduler_status": true,
+    "safety_status": true
+  },
+
+  "controls": {
+    "inspect": true,
+    "approve": true,
+    "run": false,
+    "sandbox": false,
+    "native": false,
+    "autonomous": false
+  }
+}

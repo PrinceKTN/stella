@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+
+  "resource_class": "MICRO",
+
+  "limits": {
+    "max_workers": 1,
+    "max_heavy_workers": 1,
+    "max_concurrent_ai": 1,
+    "scheduler_parallelism": 1
+  },
+
+  "micro_device_policy": {
+    "enabled": true,
+    "sequential_only": true,
+    "heavy_worker_limit": 1,
+    "automatic_scaling": false
+  }
+}

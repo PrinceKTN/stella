@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "skill": "github-workspace",
+
+  "permissions": {
+    "read_github_auth_status": true,
+    "read_github_account": true,
+    "read_git_config": true,
+    "read_repository_metadata": true,
+    "read_local_git_status": true,
+
+    "write_repository": false,
+    "push_repository": false,
+    "delete_repository": false,
+    "modify_github_settings": false,
+    "manage_credentials": false
+  },
+
+  "approval": {
+    "required_for_write": true,
+    "required_for_push": true,
+    "required_for_delete": true,
+    "required_for_settings_change": true
+  }
+}

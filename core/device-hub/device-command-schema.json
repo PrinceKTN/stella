@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+
+  "command": {
+    "id": "unique-command-id",
+    "created_at": "timestamp",
+    "source_device": "device-id",
+    "target_device": "device-id",
+    "requested_by": "user",
+    "intent": "natural-language-intent",
+    "status": "queued"
+  },
+
+  "statuses": [
+    "queued",
+    "routing",
+    "waiting",
+    "running",
+    "completed",
+    "failed",
+    "cancelled",
+    "blocked"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "agent": "06-automation-scheduler",
+
+  "default_mode": "OBSERVE",
+
+  "execution_modes": {
+    "observe": {
+      "enabled": true,
+      "execute_actions": false,
+      "external_requests": false,
+      "native_modification": false
+    },
+
+    "dry_run": {
+      "enabled": true,
+      "execute_actions": false,
+      "external_requests": false,
+      "native_modification": false
+    },
+
+    "sandbox": {
+      "enabled": true,
+      "approval_required": true,
+      "native_modification": false
+    },
+
+    "native": {
+      "enabled": false,
+      "approval_required": true
+    },
+
+    "autonomous": {
+      "enabled": false,
+      "requires_explicit_skill_whitelist": true,
+      "requires_approval_policy": true
+    }
+  },
+
+  "risk_policy": {
+    "unknown_risk": "HIGH",
+    "high_risk_requires_approval": true,
+    "destructive_actions_require_approval": true,
+    "credential_actions_require_approval": true,
+    "financial_actions_require_approval": true,
+    "network_control_requires_approval": true
+  },
+
+  "protection": {
+    "never_delete_previous_runs": true,
+    "never_overwrite_test_history": true,
+    "preserve_logs": true,
+    "preserve_events": true,
+    "automatic_destructive_recovery": false,
+    "automatic_retry": false
+  }
+}

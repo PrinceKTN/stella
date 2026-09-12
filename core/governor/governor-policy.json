@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "component": "stella-resource-governor",
+  "version": "1.0",
+  "mode": "READ_ONLY_DECISION",
+  "inputs": {
+    "awareness_state": "state/awareness.json",
+    "resource_policy": "core/scheduler/resource-policy.json",
+    "risk_policy": "core/safety/risk-policy.json"
+  },
+  "decisions": {
+    "ALLOW": {
+      "description": "Normal resource conditions. New permitted work may proceed."
+    },
+    "LIMIT": {
+      "description": "Resources are guarded. Only lightweight sequential work should proceed."
+    },
+    "BLOCK_HEAVY": {
+      "description": "Resources are pressured. Heavy workloads should not be admitted."
+    },
+    "PROTECT": {
+      "description": "Device is critical. Do not admit new workloads."
+    }
+  },
+  "condition_mapping": {
+    "NORMAL": "ALLOW",
+    "GUARDED": "LIMIT",
+    "PRESSURED": "BLOCK_HEAVY",
+    "CRITICAL": "PROTECT",
+    "UNKNOWN": "PROTECT"
+  },
+  "safety": {
+    "read_only": true,
+    "no_process_kill": true,
+    "no_cleanup": true,
+    "no_configuration_changes": true,
+    "no_workload_execution": true
+  },
+  "freshness": {
+    "enabled": true,
+    "max_awareness_age_seconds": 300,
+    "stale_action": "PROTECT",
+    "invalid_timestamp_action": "PROTECT"
+  }
+}

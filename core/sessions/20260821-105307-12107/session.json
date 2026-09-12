@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "session_id": "20260821-105307-12107",
+  "created_at": "2026-08-21T10:53:07+0100",
+  "status": "ACTIVE",
+  "resource_class": "MICRO",
+  "strategy": "SEQUENTIAL",
+  "max_workers": 1,
+  "active_workers": 0,
+  "tasks_completed": 0,
+  "tasks_failed": 0
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+
+  "phase_01": [
+    "detect_cli",
+    "detect_auth",
+    "guided_login",
+    "detect_account",
+    "detect_git_identity"
+  ],
+
+  "phase_02": [
+    "list_repositories",
+    "inspect_repository",
+    "inspect_local_repository",
+    "workspace_registry"
+  ],
+
+  "phase_03_locked": [
+    "clone",
+    "create_repository",
+    "branch",
+    "commit",
+    "push",
+    "pull",
+    "issues",
+    "pull_requests",
+    "releases",
+    "actions",
+    "deployment"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+
+  "risk_levels": {
+    "LOW": {
+      "examples": [
+        "read-only inspection",
+        "state inspection",
+        "health checks"
+      ],
+      "approval_required": false
+    },
+
+    "MEDIUM": {
+      "examples": [
+        "create temporary files",
+        "install non-system development dependencies",
+        "run isolated test workloads"
+      ],
+      "approval_required": true
+    },
+
+    "HIGH": {
+      "examples": [
+        "modify system configuration",
+        "delete data",
+        "change security settings",
+        "control external devices",
+        "execute financial actions"
+      ],
+      "approval_required": true,
+      "sandbox_first": true
+    }
+  },
+
+  "unknown_risk": {
+    "default": "HIGH",
+    "approval_required": true
+  }
+}

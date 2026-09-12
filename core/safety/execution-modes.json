@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "modes": {
+    "OBSERVE": {
+      "description": "Inspect state without changing the system.",
+      "external_changes": false,
+      "ai_execution": false,
+      "approval": false
+    },
+
+    "DRY-RUN": {
+      "description": "Simulate an operation without executing it.",
+      "external_changes": false,
+      "ai_execution": false,
+      "approval": false
+    },
+
+    "SANDBOX": {
+      "description": "Execute inside an isolated test environment when available.",
+      "external_changes": "sandbox_only",
+      "ai_execution": "optional",
+      "approval": true
+    },
+
+    "NATIVE": {
+      "description": "Execute against the real device.",
+      "external_changes": true,
+      "ai_execution": "optional",
+      "approval": true
+    }
+  },
+
+  "default_mode": "OBSERVE",
+  "preferred_test_mode": "SANDBOX",
+  "high_risk_mode": "NATIVE_REQUIRES_EXPLICIT_APPROVAL"
+}

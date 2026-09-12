@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "skill_id": "github-workspace",
+  "name": "GitHub Workspace",
+  "version": "0.1.0",
+  "agent": "07-learning-skills",
+  "status": "INSTALLED",
+
+  "capabilities": {
+    "detect_cli": true,
+    "detect_authentication": true,
+    "guided_login": true,
+    "detect_account": true,
+    "detect_git_identity": true,
+    "inspect_repositories": true,
+    "workspace_registry": true,
+
+    "clone": false,
+    "create_repository": false,
+    "commit": false,
+    "push": false,
+    "pull": false,
+    "branch": false,
+    "issues": false,
+    "pull_requests": false,
+    "releases": false,
+    "actions": false,
+    "deployment": false
+  },
+
+  "safety": {
+    "default_mode": "OBSERVE",
+    "execution": "DRY-RUN",
+    "unknown_risk": "HIGH",
+    "native_execution": false,
+    "autonomous_execution": false,
+    "write_operations": false,
+    "destructive_operations": false,
+    "credential_storage_by_stella": false,
+    "approval_required_for_future_write_operations": true
+  },
+
+  "resource_policy": {
+    "resource_class": "MICRO",
+    "max_workers": 1,
+    "sequential": true
+  }
+}

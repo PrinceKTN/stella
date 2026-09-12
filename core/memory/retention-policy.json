@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "default": {
+    "new_conversation_information": "session",
+    "automatic_permanent_memory": false
+  },
+
+  "modes": {
+    "none": {
+      "description": "Do not store this information",
+      "expires": true
+    },
+
+    "session": {
+      "description": "Available during the current conversation only",
+      "expires": true
+    },
+
+    "timed": {
+      "description": "Expires at a specified time",
+      "expires": true
+    },
+
+    "project": {
+      "description": "Retain while the specified project remains active",
+      "expires": true
+    },
+
+    "long_term": {
+      "description": "Retain for long-term use",
+      "expires": false
+    },
+
+    "permanent": {
+      "description": "Retain until explicitly forgotten",
+      "expires": false
+    }
+  },
+
+  "natural_language_examples": [
+    "remember this for 2 hours",
+    "remember this for 7 days",
+    "remember this for 3 months",
+    "remember this for 1 year",
+    "remember this until the project is finished",
+    "remember this permanently",
+    "do not remember this",
+    "forget this tomorrow",
+    "forget this now"
+  ]
+}

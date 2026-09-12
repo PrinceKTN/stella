@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "interface": "web_gui",
+  "status": "FOUNDATION_READY",
+
+  "mode": "LIVE_DASHBOARD",
+
+  "visualization": {
+    "system_status": true,
+    "agent_status": true,
+    "brain_status": true,
+    "provider_status": true,
+    "task_queue": true,
+    "automation": true,
+    "skills": true,
+    "learning": true,
+    "sessions": true,
+    "event_stream": true,
+    "live_logs": true,
+    "resource_usage": true,
+    "safety_state": true
+  },
+
+  "controls": {
+    "inspect": true,
+    "approve": true,
+    "run": false,
+    "native": false,
+    "autonomous": false
+  }
+}
