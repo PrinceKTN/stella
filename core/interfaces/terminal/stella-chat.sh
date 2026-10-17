@@ -643,6 +643,19 @@ log_event "Stella Live Runtime started"
 # MAIN LOOP
 # ============================================================
 
+
+# ---- LOCAL DEVICE CAPABILITY ----
+answer_local_device_question() {
+    local question="$*"
+    local capability="$STELLA_ROOT/core/capabilities/device/local-answer.sh"
+
+    if [ ! -x "$capability" ]; then
+        return 2
+    fi
+
+    "$capability" "$question"
+}
+
 while true; do
 
     printf '\nYou › '
@@ -688,10 +701,31 @@ while true; do
             ;;
 
         *)
-            echo
-            printf 'Stella › '
+            # ====================================================
+            # NATIVE CAPABILITY ROUTER
+            # ====================================================
+            # Try deterministic local capabilities first.
+            # Exit code 0 = capability understood and answered.
+            # Exit code 2 = capability does not handle this request.
+            # Anything else = capability unavailable/error.
+            # ====================================================
 
-            ask_stella "$INPUT"
+            LOCAL_RESPONSE=""
+
+            LOCAL_RESPONSE=$(answer_local_device_question "$INPUT" 2>/dev/null)
+            LOCAL_RC=$?
+
+            if [ "$LOCAL_RC" -eq 0 ] && [ -n "$LOCAL_RESPONSE" ]; then
+                echo
+                printf 'Stella › '
+                printf '%s\n' "$LOCAL_RESPONSE"
+                log_event "Native device capability answered user request"
+            else
+                echo
+                printf 'Stella › '
+
+                ask_stella "$INPUT"
+            fi
             ;;
     esac
 

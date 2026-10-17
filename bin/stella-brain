@@ -1,0 +1,27 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+set -u
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+CONFIG="$ROOT/config/brain.env"
+RESOLVER="$ROOT/core/brain/resolve.sh"
+
+if [ -f "$CONFIG" ]; then
+    set -a
+    . "$CONFIG"
+    set +a
+fi
+
+if ! "$RESOLVER"; then
+    exit 1
+fi
+
+echo
+echo "╔══════════════════════════════════════════════════════╗"
+echo "║                 STELLA BRAIN                       ║"
+echo "╚══════════════════════════════════════════════════════╝"
+echo
+echo "  Provider : ${STELLA_BRAIN_PROVIDER:-UNKNOWN}"
+echo "  Model    : ${STELLA_BRAIN_MODEL:-UNKNOWN}"
+echo "  Credential: ${STELLA_BRAIN_CREDENTIAL_ENV:-LOCAL/NONE}"
+echo
