@@ -3,6 +3,7 @@
 stella - one command to reach Stella from any folder.
 
   stella                    talk to Stella (terminal chat)
+  stella classic            the old plain chat (no tools)
   stella find               find your ChatGPT export zip
   stella archive ZIP        copy + unzip the copy, clearly named
   stella doctor             check that this device is ready
@@ -24,6 +25,7 @@ from pathlib import Path
 MARKER = "stella-launcher"
 CHAT = Path("core/interfaces/terminal/stella-chat.sh")
 FILES = Path("core/capabilities/files/stella_files.py")
+AGENT = Path("core/agent/stella_agent.py")
 
 
 def stella_home():
@@ -50,6 +52,13 @@ def detect_env():
 # ---------------------------------------------------------------- commands
 
 def cmd_chat(root, env, args):
+    agent = root / AGENT
+    if agent.is_file():
+        return subprocess.call([sys.executable, str(agent), *args])
+    return cmd_classic(root, env, args)
+
+
+def cmd_classic(root, env, args):
     script = root / CHAT
     if not script.is_file():
         print(f"Cannot find the chat script: {script}", file=sys.stderr)
@@ -197,6 +206,8 @@ def main(argv):
         return 0
     if cmd == "chat":
         return cmd_chat(root, env, rest)
+    if cmd == "classic":
+        return cmd_classic(root, env, rest)
     if cmd in ("find", "archive"):
         return cmd_files(root, cmd, rest)
     if cmd == "doctor":
