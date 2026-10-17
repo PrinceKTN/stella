@@ -1,0 +1,213 @@
+#!/usr/bin/env python3
+"""
+stella - one command to reach Stella from any folder.
+
+  stella                    talk to Stella (terminal chat)
+  stella find               find your ChatGPT export zip
+  stella archive ZIP        copy + unzip the copy, clearly named
+  stella doctor             check that this device is ready
+  stella install-command    make the word "stella" work everywhere
+  stella uninstall-command  remove that command (only the one we made)
+
+Works on Termux, Debian/Ubuntu/WSL, macOS, and Windows (PowerShell / cmd).
+Standard library only. Never deletes your files.
+"""
+import os
+import shlex
+import shutil
+import socket
+import sqlite3
+import subprocess
+import sys
+from pathlib import Path
+
+MARKER = "stella-launcher"
+CHAT = Path("core/interfaces/terminal/stella-chat.sh")
+FILES = Path("core/capabilities/files/stella_files.py")
+
+
+def stella_home():
+    env = os.environ.get("STELLA_HOME")
+    root = Path(env).expanduser() if env else Path(__file__).resolve().parent.parent
+    return root.resolve()
+
+
+def detect_env():
+    if os.name == "nt":
+        return "windows"
+    if "com.termux" in os.environ.get("PREFIX", ""):
+        return "termux"
+    if sys.platform == "darwin":
+        return "macos"
+    try:
+        if "microsoft" in Path("/proc/version").read_text().lower():
+            return "wsl"
+    except OSError:
+        pass
+    return "linux"
+
+
+# ---------------------------------------------------------------- commands
+
+def cmd_chat(root, env, args):
+    script = root / CHAT
+    if not script.is_file():
+        print(f"Cannot find the chat script: {script}", file=sys.stderr)
+        return 1
+    if env == "windows":
+        print("Stella's chat runs inside WSL (Debian/Ubuntu) for now.\n"
+              "Open your WSL window and type:  stella\n"
+              "(Native PowerShell/cmd support for chat comes later. "
+              "'stella find', 'stella archive' and 'stella doctor' already work here.)")
+        return 1
+    bash = shutil.which("bash")
+    if not bash:
+        print("bash is needed for chat but was not found.", file=sys.stderr)
+        return 1
+    return subprocess.call([bash, str(script), *args])
+
+
+def cmd_files(root, sub, args):
+    script = root / FILES
+    if not script.is_file():
+        print(f"Cannot find the file skill: {script}", file=sys.stderr)
+        return 1
+    return subprocess.call([sys.executable, str(script), sub, *args])
+
+
+def cmd_doctor(root, env):
+    bad = 0
+
+    def line(ok, text, fix=""):
+        nonlocal bad
+        if not ok:
+            bad += 1
+        print(f"  {'OK ' if ok else '!! '} {text}" + (f"\n       fix: {fix}" if (fix and not ok) else ""))
+
+    print(f"Stella check on: {env}")
+    line((root / "core").is_dir(), f"Stella folder: {root}",
+         "run from your Stella folder or set STELLA_HOME to it")
+    line(sys.version_info >= (3, 8), f"Python {sys.version.split()[0]}", "install Python 3.8 or newer")
+    try:
+        c = sqlite3.connect(":memory:")
+        c.execute("create virtual table t using fts5(x)")
+        c.close()
+        fts = True
+    except sqlite3.Error:
+        fts = False
+    line(fts, "Fast search (SQLite FTS5) works", "install a Python build with FTS5")
+    if env != "windows":
+        line(bool(shutil.which("bash")), "bash found (needed for chat)", "install bash")
+    line((root / "config" / "providers.env").is_file(),
+         "Provider file exists (config/providers.env)",
+         "set up your free Gemini key with ./bin/stella-provider set gemini")
+    try:
+        socket.create_connection(("generativelanguage.googleapis.com", 443), timeout=6).close()
+        net = True
+    except OSError:
+        net = False
+    line(net, "Internet reaches Gemini", "check data/Wi-Fi; on Termux try flight mode on then off")
+    line(bool(shutil.which("stella")), "The word 'stella' works from any folder",
+         "run: stella install-command")
+    print("\nAll good." if not bad else f"\n{bad} thing(s) to fix (see 'fix:' lines).")
+    return 0 if not bad else 1
+
+
+def command_target(env, home=None):
+    home = Path(home) if home else Path.home()
+    if env == "windows":
+        return home / "bin" / "stella.cmd"
+    if env == "termux":
+        return Path(os.environ["PREFIX"]) / "bin" / "stella"
+    return home / ".local" / "bin" / "stella"
+
+
+def wrapper_text(root, env):
+    if env == "windows":
+        return (
+            "@echo off\r\n"
+            f"rem {MARKER}\r\n"
+            f'set "STELLA_HOME={root}"\r\n'
+            "where py >nul 2>nul\r\n"
+            "if %errorlevel%==0 (\r\n"
+            '  py -3 "%STELLA_HOME%\\bin\\stella" %*\r\n'
+            ") else (\r\n"
+            '  python "%STELLA_HOME%\\bin\\stella" %*\r\n'
+            ")\r\n"
+            "exit /b %errorlevel%\r\n"
+        )
+    sh = f"{os.environ['PREFIX']}/bin/sh" if env == "termux" else "/bin/sh"
+    return (
+        f"#!{sh}\n"
+        f"# {MARKER}\n"
+        f"STELLA_HOME={shlex.quote(str(root))}\n"
+        "export STELLA_HOME\n"
+        'exec python3 "$STELLA_HOME/bin/stella" "$@"\n'
+    )
+
+
+def cmd_install(root, env, home=None):
+    target = command_target(env, home)
+    if target.exists() and MARKER not in target.read_text(errors="ignore"):
+        print(f"STOP: {target} already exists and is not ours. Not touching it.", file=sys.stderr)
+        return 1
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with open(target, "w", newline="") as f:
+        f.write(wrapper_text(root, env))
+    if env != "windows":
+        target.chmod(0o755)
+    print(f"Installed: {target}")
+    on_path = str(target.parent) in os.environ.get("PATH", "").split(os.pathsep)
+    if on_path:
+        print("Done. Open a new terminal window and type:  stella")
+    elif env == "windows":
+        print("One more step. Run this once in PowerShell, then open a NEW window:\n\n"
+              "  [Environment]::SetEnvironmentVariable('Path', "
+              "[Environment]::GetEnvironmentVariable('Path','User') + ';' + "
+              '"$env:USERPROFILE\\bin", \'User\')')
+    else:
+        print("One more step. Run this once, then open a NEW terminal window:\n\n"
+              "  echo 'export PATH=\"$HOME/.local/bin:$PATH\"' >> ~/.bashrc")
+    return 0
+
+
+def cmd_uninstall(env, home=None):
+    target = command_target(env, home)
+    if not target.exists():
+        print("Nothing to remove.")
+        return 0
+    if MARKER not in target.read_text(errors="ignore"):
+        print(f"STOP: {target} is not ours. Not touching it.", file=sys.stderr)
+        return 1
+    target.unlink()
+    print(f"Removed: {target}")
+    return 0
+
+
+HELP = __doc__
+
+
+def main(argv):
+    env = detect_env()
+    root = stella_home()
+    cmd = argv[0] if argv else "chat"
+    rest = argv[1:]
+    if cmd in ("-h", "--help", "help"):
+        print(HELP)
+        return 0
+    if cmd == "chat":
+        return cmd_chat(root, env, rest)
+    if cmd in ("find", "archive"):
+        return cmd_files(root, cmd, rest)
+    if cmd == "doctor":
+        return cmd_doctor(root, env)
+    if cmd == "install-command":
+        return cmd_install(root, env)
+    if cmd == "uninstall-command":
+        return cmd_uninstall(env)
+    print(f"Unknown command: {cmd}\n\n{HELP}", file=sys.stderr)
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
