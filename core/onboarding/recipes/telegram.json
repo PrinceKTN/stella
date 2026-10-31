@@ -1,0 +1,33 @@
+{
+  "id": "telegram",
+  "name": "Telegram (talk to Stella from your phone)",
+  "kind": "bot_token",
+  "secret_name": "telegram_bot_token",
+  "why": "Lets a Telegram bot become a door into Stella.",
+  "needs_human": "Only you can create a bot in your own Telegram account.",
+  "minutes": 3,
+  "status_note": "Your token is stored safely now. The Telegram bridge itself arrives in a later update.",
+  "steps": [
+    {"title": "Open BotFather in Telegram",
+     "open": "https://t.me/BotFather",
+     "you_see": "Telegram opens a chat with BotFather, the official account for making bots. It has a blue check mark.",
+     "do": "Press Start. (Or search for @BotFather inside Telegram and choose the one with the blue check.)"},
+    {"title": "Ask for a new bot",
+     "you_see": "A text box to type messages.",
+     "do": "Send:  /newbot"},
+    {"title": "Choose a display name",
+     "you_see": "BotFather asks what to call your bot.",
+     "do": "Type any name people will see, for example: My Stella. You can change it later."},
+    {"title": "Choose a username",
+     "you_see": "BotFather asks for a username.",
+     "do": "It must end in the letters bot and be unique across Telegram, for example: my_stella_1234_bot. It cannot be changed later."},
+    {"title": "Copy the token",
+     "you_see": "A message with a token: a number, a colon, then a random-looking string.",
+     "do": "Touch and hold the token, then copy it. Do not send it to anyone."}
+  ],
+  "format_hint": "it looks like 1234567890:AAH... : a number, a colon, then letters and numbers",
+  "regex": "^\\d{5,14}:[A-Za-z0-9_-]{30,50}$",
+  "verify": {"url": "https://api.telegram.org/bot{secret}/getMe", "json_path": ["result", "username"], "show": "Connected to your bot @{detail}."},
+  "after": "Keep the token private: anyone who has it can control your bot.",
+  "if_leaked": "If it ever leaks, open BotFather, send /revoke, pick your bot, then run /connect telegram again with the new token. The old one stops working at once."
+}

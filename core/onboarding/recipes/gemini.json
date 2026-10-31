@@ -1,0 +1,26 @@
+{
+  "id": "gemini",
+  "name": "Gemini (Google's free AI brain)",
+  "kind": "api_key",
+  "secret_name": "gemini_api_key",
+  "why": "This is Stella's brain. She cannot think without it.",
+  "needs_human": "Google makes you sign in and create the key yourself. Nobody else can do this part for you.",
+  "minutes": 2,
+  "steps": [
+    {"title": "Open Google AI Studio's key page",
+     "open": "https://aistudio.google.com/apikey",
+     "you_see": "A Google sign-in page if you are not signed in, then a page about API keys.",
+     "do": "Sign in with any Google account."},
+    {"title": "Create a key",
+     "you_see": "A button to create an API key. The wording can change over time.",
+     "do": "Click it. If it asks you to pick a project, take the default or let it make one."},
+    {"title": "Copy the key",
+     "you_see": "A long piece of text that starts with AIza or AQ.",
+     "do": "Click the copy icon next to it, or select it and press Ctrl+C."}
+  ],
+  "format_hint": "it starts with AIza or AQ. and is a long string with no spaces",
+  "regex": "^(?:AIza|AQ\\.)[0-9A-Za-z_.\\-]{30,}$",
+  "verify": {"url": "https://generativelanguage.googleapis.com/v1beta/models?pageSize=1", "header": "x-goog-api-key"},
+  "after": "Stella uses it automatically from now on. Free keys have limits: if she says she is asked too often, wait a minute.",
+  "if_leaked": "If you ever paste this key somewhere public, make a new one on the same page and run /connect gemini again."
+}
