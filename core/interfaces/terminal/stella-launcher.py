@@ -318,9 +318,11 @@ def doctor():
         line(True, "live '/' menu not installed (optional): " + ("py -m pip install prompt_toolkit" if kind() == "windows"
                                                                else "python3 -m pip install prompt_toolkit"))
     found = shutil.which(NAME)
-    line(bool(found), f"the word '{NAME}' is found at: {found}" if found else
-         f"the word '{NAME}' is not found from here yet (run --install-command, then --add-path)")
     t = target_for()
+    fresh = bool(not found and t.exists() and ours(t))      # installed a moment ago: this window just has not seen it
+    line(bool(found) or fresh, f"the word '{NAME}' is found at: {found}" if found else
+         (f"the word '{NAME}' is installed; open a NEW terminal window and type: {NAME}" if fresh else
+          f"the word '{NAME}' is not found from here yet (run --install-command, then --add-path)"))
     if t.exists() and not ours(t):
         line(False, f"{t} is an older '{NAME}' that is NOT mine, so it runs instead of Stella's new one")
     print("\n  Everything looks fine." if ok else "\n  Fix the [!!] lines above, then run: stella doctor again.")
