@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "skill": "chat-bank",
+
+  "permissions": {
+    "read_archived_exports": true,
+    "write_inside_data_folder": true,
+    "read_state_files": false,
+    "network": false,
+    "write_outside_data_folder": false,
+    "modify_existing_stella_files": false,
+    "write_oracle_memory_database": false,
+    "store_credentials": false
+  },
+
+  "approval": {
+    "required_for_write": true,
+    "required_before_showing_chat_text_to_cloud_brain": true,
+    "required_for_heavy_work_when_governor_says_protect": true
+  },
+
+  "privacy": {
+    "secrets_redacted_before_storing": true,
+    "raw_export_copy_untouched": true
+  }
+}

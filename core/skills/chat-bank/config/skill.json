@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "skill_id": "chat-bank",
+  "name": "Chat Bank",
+  "version": "0.1.0",
+  "description": "A private, searchable library of the user's archived ChatGPT history. It stays on this device; Gemini only sees small pieces the user approves.",
+  "category": "memory",
+
+  "risk": {
+    "level": "MEDIUM",
+    "reason": "Creates a local database inside Stella's data folder from archived exports. Never uses the network."
+  },
+
+  "permissions": {
+    "filesystem_read": true,
+    "filesystem_write": true,
+    "network": false,
+    "process_execution": false,
+    "device_control": false,
+    "credentials": false,
+    "financial": false
+  },
+
+  "execution": {
+    "sandbox_allowed": true,
+    "sandbox_required": true,
+    "native_allowed": false,
+    "autonomous_allowed": false,
+    "requires_approval": true
+  },
+
+  "dependencies": [],
+
+  "status": {
+    "enabled": false,
+    "tested": false,
+    "approved": false
+  },
+
+  "agent_tools": "bin/tools.py",
+  "sandbox_root": "data/",
+  "authored_by": "Claude (claude-work branch)"
+}
