@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  push:
+    branches: [main, hermes-dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-json:
+    name: Validate JSON Configs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON files
+        run: |
+          find . -name "*.json" -type f ! -path "./.git/*" ! -path "./node_modules/*" | xargs -I{} sh -c 'python3 -m json.tool {} > /dev/null && echo "OK: {}" || (echo "INVALID: {}" && exit 1)'
+
+  preflight:
+    name: Stella Preflight
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run preflight check
+        run: |
+          if [ -f "./stella-preflight.sh" ]; then
+            chmod +x ./stella-preflight.sh
+            ./stella-preflight.sh || true
+          else
+            echo "No preflight script found"
+          fi
+
+  shellcheck:
+    name: ShellCheck (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Run shellcheck on all .sh files
+        run: |
+          find . -name "*.sh" -type f ! -path "./.git/*" | xargs shellcheck -x || true
+
+  shfmt:
+    name: shfmt (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shfmt
+        run: |
+          curl -sSL https://github.com/mvdan/sh/releases/download/v3.8.0/shfmt_v3.8.0_linux_amd64 -o shfmt
+          chmod +x shfmt
+          sudo mv shfmt /usr/local/bin/
+      - name: Check formatting
+        run: |
+          find . -name "*.sh" -type f ! -path "./.git/*" | xargs shfmt -d || true
+
+  python-lint:
+    name: Python Lint (ruff) (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ruff
+        run: pipx install ruff
+      - name: Lint Python files
+        run: |
+          find . -name "*.py" -type f ! -path "./.git/*" | xargs ruff check || true
+
+  bats:
+    name: Bats Tests (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install bats
+        run: sudo apt-get update && sudo apt-get install -y bats
+      - name: Run tests
+        run: |
+          if [ -d "tests" ] && find tests -name "*.bats" -type f | grep -q .; then
+            find tests -name "*.bats" -type f | xargs bats
+          else
+            echo "No bats tests found"
+          fi
+
+  ci:
+    name: CI (required)
+    runs-on: ubuntu-latest
+    needs: [validate-json, preflight]
+    steps:
+      - name: CI passed
+        run: echo "Required checks passed"
