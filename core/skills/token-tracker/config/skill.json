@@ -1,0 +1,25 @@
+{
+  "name": "token-tracker",
+  "version": "1.0.0",
+  "description": "Live token usage monitoring across providers with smart splitting and alerting",
+  "author": "Stella Agent",
+  "license": "MIT",
+  "entry_point": "bin/token-tracker.sh",
+  "commands": {
+    "record": "Record token usage (provider, model, input, output, operation)",
+    "report": "Show daily usage report for all providers",
+    "split": "Get smart split recommendation for estimated tokens",
+    "monitor": "Live monitoring daemon",
+    "alerts": "Show recent alerts",
+    "export": "Export usage data (json/csv)",
+    "cleanup": "Clean old data (retention days)",
+    "config": "Show/update configuration"
+  },
+  "dependencies": ["python3", "jq"],
+  "provides": ["token_monitoring", "provider_optimization", "limit_alerting", "task_splitting"],
+  "hooks": {
+    "pre_provider_call": "token-tracker.sh estimate",
+    "post_provider_call": "token-tracker.sh record",
+    "daily_summary": "token-tracker.sh report"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "tracking": {
+    "live_monitoring": true,
+    "per_provider_daily_limits": {
+      "gemini": { "requests_per_minute": 15, "requests_per_day": 1500, "tokens_per_minute": 1000000, "tokens_per_day": 50000000 },
+      "openrouter": { "requests_per_minute": 20, "requests_per_day": 1000, "tokens_per_minute": 200000, "tokens_per_day": 10000000 },
+      "groq": { "requests_per_minute": 30, "requests_per_day": 14400, "tokens_per_minute": 500000, "tokens_per_day": 30000000 },
+      "ollama": { "requests_per_minute": 999, "requests_per_day": 999999, "tokens_per_minute": 999999999, "tokens_per_day": 999999999 },
+      "openai": { "requests_per_minute": 500, "requests_per_day": 10000, "tokens_per_minute": 200000, "tokens_per_day": 10000000 },
+      "anthropic": { "requests_per_minute": 50, "requests_per_day": 1000, "tokens_per_minute": 40000, "tokens_per_day": 2000000 }
+    },
+    "alert_thresholds": {
+      "warning_percent": 70,
+      "critical_percent": 90,
+      "near_limit_minutes": 60
+    },
+    "smart_splitting": {
+      "enabled": true,
+      "max_tokens_per_task": 4000,
+      "prefer_free_providers": true,
+      "auto_fallback": true,
+      "split_strategy": "by_context_window"
+    },
+    "persistence": {
+      "retention_days": 30,
+      "aggregate_hourly": true
+    }
+  },
+  "display": {
+    "show_in_prompt": true,
+    "compact_mode": false,
+    "color_alerts": true
+  }
+}
